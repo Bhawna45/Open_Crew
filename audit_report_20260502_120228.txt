@@ -1,0 +1,110 @@
+======================================================================
+     PASSWORD CRACKING & CREDENTIAL ATTACK SUITE – AUDIT REPORT
+======================================================================
+  Generated : 2026-05-02 12:02:28
+  Purpose   : Educational / Authorised Security Assessment
+  Scope     : Controlled lab environment only
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  SECTION 1: DICTIONARY GENERATOR
+──────────────────────────────────────────────────────────────────────
+  Total words generated : 18,787
+  Sample (first 20)     :
+    !01-01-1990  !01/01/1990  !01011990  !010190  !1990
+    !19900101  !41!c3  !41!c3c0mp4ny  !41!c3c0mp@ny  !41!c3c0mpany
+    !41!c3comp4ny  !41!c3comp@ny  !41!c3company  !41!ce  !41!cec0mp4ny
+    !41!cec0mp@ny  !41!cec0mpany  !41!cecomp4ny  !41!cecomp@ny  !41!cecompany
+
+──────────────────────────────────────────────────────────────────────
+  SECTION 2: HASH EXTRACTION / PARSING
+──────────────────────────────────────────────────────────────────────
+  Total entries parsed : 7
+
+  Username             Algorithm    Locked  
+  ──────────────────── ──────────── ────────
+  root                 SHA-512      no      
+  alice                SHA-512      no      
+  bob                  MD5          no      
+  charlie              SHA-256      no      
+  dave                 DES (legacy) YES     
+  eve                  DES (legacy) YES     
+  frank                SHA-512      no      
+
+  Algorithm distribution:
+    DES (legacy)      2 account(s)  [HIGH RISK – upgrade immediately]
+    MD5               1 account(s)  [HIGH RISK – upgrade immediately]
+    SHA-256           1 account(s)  [MEDIUM – use adaptive KDF instead]
+    SHA-512           3 account(s)  [MEDIUM – use adaptive KDF instead]
+
+──────────────────────────────────────────────────────────────────────
+  SECTION 3: BRUTE-FORCE / DICTIONARY ATTACK RESULTS
+──────────────────────────────────────────────────────────────────────
+  Targets tested   : 7
+  Passwords cracked: 0  (0%)
+  Not cracked      : 7
+
+
+──────────────────────────────────────────────────────────────────────
+  SECTION 4: PASSWORD STRENGTH ANALYSIS
+──────────────────────────────────────────────────────────────────────
+  Password                   Score Grade                   Entropy
+  ───────────────────────── ────── ────────────────────── ────────
+  password                      0/10  F – Very Weak             37.6 bits
+  Admin@2024                    7/10  B – Strong                65.7 bits
+  Tr0ub4dor&3                   8/10  B – Strong                72.3 bits
+  123456789                     0/10  F – Very Weak             29.9 bits
+  G7#kLmP2!q                    8/10  B – Strong                65.7 bits
+
+  Average score  : 4.6/10
+  Weak passwords : 2/5 (40%)
+
+  Most common issues:
+    • No uppercase letters (2×)
+    • No special characters (2×)
+    • Contains date-like pattern (2×)
+    • No digits (1×)
+    • Found in common password list (1×)
+
+──────────────────────────────────────────────────────────────────────
+  SECTION 5: EXECUTIVE SUMMARY
+──────────────────────────────────────────────────────────────────────
+  Overall risk level : 🟠 MEDIUM – Improvements recommended
+
+  Key Findings:
+  ⚠  2 password(s) scored 4/10 or below (Weak or Very Weak).
+  ⚠  3 account(s) use weak/legacy hashing algorithms.
+
+──────────────────────────────────────────────────────────────────────
+  SECTION 6: RECOMMENDED MITIGATIONS
+──────────────────────────────────────────────────────────────────────
+
+  PASSWORD POLICY
+  • Enforce minimum length of 12–16 characters.
+  • Require uppercase, lowercase, digits, and symbols.
+  • Reject passwords found in common/breached password lists.
+  • Implement account lockout after 5–10 failed attempts.
+  • Set password expiry to 90 days for sensitive accounts.
+
+  HASHING & STORAGE
+  • Use bcrypt, Argon2id, or scrypt — never plain MD5/SHA-1.
+  • Always use a unique per-user random salt.
+  • Increase work factor as hardware improves.
+
+  AUTHENTICATION HARDENING
+  • Enable Multi-Factor Authentication (MFA) wherever possible.
+  • Monitor failed login attempts and alert on anomalies.
+  • Disable LM hashes on Windows via Group Policy.
+  • Use Credential Guard to protect LSASS memory.
+  • Audit privileged accounts quarterly.
+
+  USER EDUCATION
+  • Train users to use passphrases (e.g. 4-word random phrases).
+  • Recommend a password manager (Bitwarden, 1Password, KeePass).
+  • Warn against password reuse across sites.
+
+======================================================================
+  END OF REPORT
+  This report was generated in a controlled educational environment.
+  Unauthorised use of these techniques is illegal and unethical.
+======================================================================
